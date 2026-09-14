@@ -46,13 +46,6 @@ const MEMBER_REQUEST_CHUNK_SIZE = 100;
 const MEMBER_SEARCH_LIMIT = 1000;
 const MEMBER_ROW_HEIGHT = 56;
 
-const authors = [
-    {
-        name: "cones",
-        id: 0n
-    }
-];
-
 const enum RemoteState {
     Idle = "idle",
     Loading = "loading",
@@ -993,7 +986,12 @@ const contextMenuPatch: NavContextMenuPatchCallback = (children, { guild }: { gu
 export default definePlugin({
     name: "RoleManager",
     description: "Browse server roles and see which members have them without needing moderation permissions.",
-    authors,
+    authors: [
+        {
+            name: "cones",
+            id: 0n
+        }
+    ],
     settings,
     tags: ["guild", "roles", "members"],
     contextMenus: {
