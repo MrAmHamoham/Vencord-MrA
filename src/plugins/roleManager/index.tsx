@@ -12,7 +12,7 @@ import ErrorBoundary from "@components/ErrorBoundary";
 import { classNameFactory } from "@utils/css";
 import { getUniqueUsername, openUserProfile } from "@utils/discord";
 import { ModalCloseButton, ModalContent, ModalHeader, ModalProps, ModalRoot, ModalSize, openModal } from "@utils/modal";
-import definePlugin, { OptionType } from "@utils/types";
+import definePlugin, { Devs, OptionType } from "@utils/types";
 import { Guild, Role } from "@vencord/discord-types";
 import {
     Button,
@@ -986,12 +986,7 @@ const contextMenuPatch: NavContextMenuPatchCallback = (children, { guild }: { gu
 export default definePlugin({
     name: "RoleManager",
     description: "Browse server roles and see which members have them without needing moderation permissions.",
-    authors: [
-        {
-            name: "cones",
-            id: 0n
-        }
-    ],
+    authors: [Devs.cones], // Or any valid Devs property access
     settings,
     tags: ["guild", "roles", "members"],
     contextMenus: {
