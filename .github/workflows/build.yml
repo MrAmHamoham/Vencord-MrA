@@ -1,5 +1,6 @@
 name: Build DevBuild
 on:
+    workflow_dispatch:
     push:
         branches:
             - main
@@ -18,12 +19,12 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v7
+            - uses: actions/checkout@v4
 
-            - uses: pnpm/action-setup@v6 # Install pnpm using packageManager key in package.json
+            - uses: pnpm/action-setup@v3
 
             - name: Use Node.js 24
-              uses: actions/setup-node@v6
+              uses: actions/setup-node@v4
               with:
                   node-version: 24
                   cache: "pnpm"
@@ -78,3 +79,9 @@ jobs:
                   API_TOKEN: ${{ secrets.BUILDS_TOKEN }}
                   GH_REPO: Vencord/builds
                   USERNAME: GitHub-Actions
+
+            - name: Upload Artifact for Fork
+              uses: actions/upload-artifact@v4
+              with:
+                name: vencord-dist
+                path: dist/
